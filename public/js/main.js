@@ -33,10 +33,12 @@ let checkWin = () => {
 	for (card of cardElems) {
 		if (card.getAttribute("src") !== (dir+"white.png") ) {
 			win = false;
+			console.log("didnt win");
 			break;
 		};
 	};
 	if (win == true) {
+		console.log("did win");
 		setTimeout( () => {
 			alert ("Congratulations You've Won!");
 			board.innerHTML="";
@@ -56,6 +58,7 @@ let checkForMatch = () => {
 					// alert ("You found a match!")
 					card1elem.setAttribute("src",dir+"white.png");
 					card2elem.setAttribute("src",dir+"white.png");
+					checkWin();
 
 				},500);
 			}
@@ -69,9 +72,8 @@ let checkForMatch = () => {
 
 			}
 			cardsInPlay.length=0;
-			checkWin();
-
 	}
+
 };
 function flipCard() {
 
@@ -119,7 +121,7 @@ let createBoard = async () => {
 	await makeDeck();
 	let board = document.getElementById("game-board")
 	board.innerHTML="";
-	// console.log(cards);
+	console.log(cards);
 	for (let i = 0;i<cards.length;i++)
 	{
 
@@ -132,7 +134,6 @@ let createBoard = async () => {
 
 	}
 };
-
 
 let startButton = document.createElement('img');
 startButton.setAttribute("src",dir+"start.png");
