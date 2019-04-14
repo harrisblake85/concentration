@@ -1,23 +1,25 @@
 // console.log("Successfully Linked");
-
-let suits = ["diamonds","hearts","spades","clubs"];
-let ranks = ["2","3","4","5","6","7","8","9","10","jack","queen","king","ace"];
-let cards = [];
-
-let fillDeck = () => {
-	for (suit of suits) {
-		for (rank of ranks) {
-
-			let newCard = {
-				rank: rank,
-				suit: suit,
-				cardImage: "images/playing-cards-front/"+rank+"_of_"+suit+".png"
-			};
-			cards.push(newCard);
-
-		}
-	}
-};
+//
+// ===== Used to fill deck when not using API
+//
+// let suits = ["diamonds","hearts","spades","clubs"];
+// let ranks = ["2","3","4","5","6","7","8","9","10","jack","queen","king","ace"];
+// let cards = [];
+//
+// let fillDeck = () => {
+// 	for (suit of suits) {
+// 		for (rank of ranks) {
+//
+// 			let newCard = {
+// 				rank: rank,
+// 				suit: suit,
+// 				cardImage: "images/playing-cards-front/"+rank+"_of_"+suit+".png"
+// 			};
+// 			cards.push(newCard);
+//
+// 		}
+// 	}
+// };
 
 // fillDeck(); //fills cards array full of the 52 unique playing cards (in order)
 
@@ -96,10 +98,8 @@ let makeDeck = async () => {
 let createBoard = async () => {
 
 	await makeDeck();
-	// console.log(cards);
 	let board = document.getElementById("game-board")
 	board.innerHTML="";
-	// shuffle cards here
 	// console.log(cards);
 	for (let i = 0;i<cards.length;i++)
 	{
