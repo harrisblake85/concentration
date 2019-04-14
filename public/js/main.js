@@ -26,6 +26,24 @@
 let cardsInPlay=[];
 let board = document.getElementById("game-board");
 let dir = "/images/";
+
+let checkWin = () => {
+	let win = true;
+	let cardElems = document.getElementsByClassName("card");
+	for (card of cardElems) {
+		if (card.getAttribute("src") !== (dir+"white.png") ) {
+			win = false;
+			break;
+		};
+	};
+	if (win == true) {
+		setTimeout( () => {
+			alert ("Congratulations You've Won!");
+			board.innerHTML="";
+		},500);
+	};
+};
+
 let checkForMatch = () => {
 
     if (cardsInPlay.length>=2)
@@ -51,6 +69,7 @@ let checkForMatch = () => {
 
 			}
 			cardsInPlay.length=0;
+			checkWin();
 
 	}
 };
