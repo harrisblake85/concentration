@@ -110,7 +110,7 @@ let makeDeck = async () => {
 		let newCard = {
 			rank: card.value,
 			suit: card.suit,
-			cardImage: dir+"playing-cards-front/"+card.value+"_of_"+card.suit+".png"
+			cardImage: (dir+"playing-cards-front/"+card.value+"_of_"+card.suit+".png").toLowerCase()
 		};
 		cards.push(newCard);
 	};
