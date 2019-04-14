@@ -19,11 +19,11 @@ let fillDeck = () => {
 	}
 };
 
-fillDeck(); //fills cards array full of the 52 unique playing cards (in order)
+// fillDeck(); //fills cards array full of the 52 unique playing cards (in order)
 
 let cardsInPlay=[];
 let board = document.getElementById("game-board");
-
+let dir = "/images/";
 let checkForMatch = () => {
 
     if (cardsInPlay.length>=2)
@@ -34,16 +34,16 @@ let checkForMatch = () => {
 			if (cardsInPlay[0].rank === cardsInPlay[1].rank) {
 				setTimeout( () => {
 					// alert ("You found a match!")
-					card1elem.setAttribute("src","images/white.png");
-					card2elem.setAttribute("src","images/white.png");
+					card1elem.setAttribute("src",dir+"white.png");
+					card2elem.setAttribute("src",dir+"white.png");
 
 				},500);
 			}
 			else {
 				setTimeout( () => {
 					// alert ("Sorry, try again. ")
-					card1elem.setAttribute("src","images/playing-card-back.png");
-					card2elem.setAttribute("src","images/playing-card-back.png");
+					card1elem.setAttribute("src",dir+"playing-card-back.png");
+					card2elem.setAttribute("src",dir+"playing-card-back.png");
 
 				},500);
 
@@ -53,19 +53,18 @@ let checkForMatch = () => {
 	}
 };
 function flipCard() {
-	
+
 	console.log("attempting to flip card",this);
 
 	let cardId= this.getAttribute("id");
 	let cardSrc = this.getAttribute("src");
-	console.log("cardId",cardId);
-	console.log("User flipped"+ cards[cardId]);
+	// console.log("User flipped"+ cards[cardId]);
 
-	if (cardSrc ==="images/white.png" ) {
+	if (cardSrc ===( dir+"white.png") ) {
 		console.log("card already removed");
 	}
 	else {
-		if (this.getAttribute("src")==="images/playing-card-back.png")
+		if (this.getAttribute("src")=== (dir+"playing-card-back.png"))
 		{
 			this.setAttribute("src",cards[cardId].cardImage);
 			cardsInPlay.push(cards[cardId]);
@@ -74,13 +73,31 @@ function flipCard() {
 		else{
 			if (cardsInPlay.length==1) {
 				cardsInPlay.length = 0;
-				this.setAttribute("src","images/playing-card-back.png");
+				this.setAttribute("src",dir+"playing-card-back.png");
 			}
 		}
 	}
 };
 
-let createBoard = () => {
+let makeDeck = async () => {
+	cards = [];
+	let newCards = await getDeck();
+
+	for (card of newCards) {
+		let newCard = {
+			rank: card.value,
+			suit: card.suit,
+			cardImage: "images/playing-cards-front/"+card.value+"_of_"+card.suit+".png"
+		};
+		cards.push(newCard);
+	};
+};
+
+let createBoard = async () => {
+
+	await makeDeck();
+
+	console.log(cards);
 	let board = document.getElementById("game-board")
 	board.innerHTML="";
 	// shuffle cards here
@@ -88,9 +105,9 @@ let createBoard = () => {
 	for (let i = 0;i<cards.length;i++)
 	{
 
-		var cardElement = document.createElement('img');
+		let cardElement = document.createElement('img');
 		cardElement.setAttribute("class","card");
-		cardElement.setAttribute("src","images/playing-card-back.png");
+		cardElement.setAttribute("src",dir+"playing-card-back.png");
 		cardElement.setAttribute("id",i);
 		cardElement.addEventListener("click",flipCard);
 		board.appendChild(cardElement);
@@ -100,7 +117,7 @@ let createBoard = () => {
 
 
 let startButton = document.createElement('img');
-startButton.setAttribute("src","images/start.png");
+startButton.setAttribute("src",dir+"start.png");
 startButton.setAttribute("id","start-button");
 startButton.addEventListener("click",createBoard);
 
