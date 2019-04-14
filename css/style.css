@@ -114,3 +114,10 @@ footer{
 	height: 100px;
 	cursor: pointer;
 }
+
+@media only screen and (max-width: 400px) {
+  .card{
+		width: 24%;
+		height: 6.6%
+	}
+}
