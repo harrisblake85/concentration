@@ -1,4 +1,4 @@
-console.log("Up and running!");
+// console.log("Successfully Linked");
 
 let suits = ["diamonds","hearts","spades","clubs"];
 let ranks = ["2","3","4","5","6","7","8","9","10","jack","queen","king","ace"];
@@ -54,14 +54,14 @@ let checkForMatch = () => {
 };
 function flipCard() {
 
-	console.log("attempting to flip card",this);
+	// console.log("attempting to flip card",this);
 
 	let cardId= this.getAttribute("id");
 	let cardSrc = this.getAttribute("src");
 	// console.log("User flipped"+ cards[cardId]);
 
 	if (cardSrc ===( dir+"white.png") ) {
-		console.log("card already removed");
+		// console.log("card already removed");
 	}
 	else {
 		if (this.getAttribute("src")=== (dir+"playing-card-back.png"))
@@ -96,8 +96,7 @@ let makeDeck = async () => {
 let createBoard = async () => {
 
 	await makeDeck();
-
-	console.log(cards);
+	// console.log(cards);
 	let board = document.getElementById("game-board")
 	board.innerHTML="";
 	// shuffle cards here
