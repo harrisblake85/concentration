@@ -42,7 +42,7 @@ let checkWin = () => {
 		setTimeout( () => {
 			alert ("Congratulations You've Won!");
 			board.innerHTML="";
-		},1000);
+		},700);
 	};
 };
 
@@ -60,7 +60,7 @@ let checkForMatch = () => {
 					card2elem.setAttribute("src",dir+"white.png");
 					checkWin();
 
-				},1000);
+				},700);
 			}
 			else {
 				setTimeout( () => {
@@ -68,7 +68,7 @@ let checkForMatch = () => {
 					card1elem.setAttribute("src",dir+"playing-card-back.png");
 					card2elem.setAttribute("src",dir+"playing-card-back.png");
 
-				},1000);
+				},700);
 
 			}
 			cardsInPlay.length=0;
