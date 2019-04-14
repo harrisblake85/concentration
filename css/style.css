@@ -115,9 +115,9 @@ footer{
 	cursor: pointer;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (orientation: portrait) and (max-width: 600px) {
   .card{
-		width: 24%;
-		height: 6.6%
+		width: 22%;
+		height: 3.3%;
 	}
 }
