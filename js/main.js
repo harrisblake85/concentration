@@ -25,7 +25,7 @@
 
 let cardsInPlay=[];
 let board = document.getElementById("game-board");
-let dir = "/images/";
+let dir = "./images/";
 
 let checkWin = () => {
 	let win = true;
@@ -110,7 +110,7 @@ let makeDeck = async () => {
 		let newCard = {
 			rank: card.value,
 			suit: card.suit,
-			cardImage: "/images/playing-cards-front/"+card.value+"_of_"+card.suit+".png"
+			cardImage: dir+"playing-cards-front/"+card.value+"_of_"+card.suit+".png"
 		};
 		cards.push(newCard);
 	};
